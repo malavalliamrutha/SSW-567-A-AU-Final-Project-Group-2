@@ -150,7 +150,7 @@ def decode(string):
         print("country codes don't match")
     result = {"line1":line1, "line2":line2}
     result = json.dumps(result)
-    print(result)
+    # print(result)
     return result
    
 def encodeLine1(data):
@@ -203,7 +203,7 @@ def encode (data):
     line1 = encodeLine1(data['line1'])
     line2 = encodeLine2(data['line2'])
     result = line1 + ";" + line2
-    print(result)
+    # print(result)
     return result
 
 
