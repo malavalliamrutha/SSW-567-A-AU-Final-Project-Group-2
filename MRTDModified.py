@@ -159,7 +159,7 @@ def encodeLine1(data):
         print('given name was not provided')
     
     givenName = givenName.replace(" ", "<")
-    line += countryCode + lastName + "<<" + givenName;
+    line = f'{line}{countryCode}{lastName}<<{givenName}'
     lineLength = 44
     #if (lineLength > 44):
      #   print('line is too long')
@@ -186,7 +186,7 @@ def encodeLine2(data):
     #if len(line) >= 43:
      #   print("line is too long")
         #todo: what happens now? is it even possible to be too long
-   #else:
+    #else:
     for i in range(len(line), 43):
         line += "<"
     line += personalNumberCheck
