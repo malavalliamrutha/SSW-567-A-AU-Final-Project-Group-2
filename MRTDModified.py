@@ -72,7 +72,7 @@ def extract1(line):
             res.append(i)
     doctype = res[0]
     if (doctype != "P"):
-        print ("Document Code is not P for passport")
+        return 1
     countrycode = res[firstvalue][:thirdvalue]
     lastName = res[firstvalue][thirdvalue:]
     firstName = res[secondvalue]
@@ -182,16 +182,20 @@ def encodeLine2(data):
     sex = data['sex']
     personalNumber = data['personal_number']
     personalNumberCheck =getCheckDigit(personalNumber)
-    line += passportNumber + passportNumberCheck + countryCode + birthday + birthdayCheck + sex + expire + expireCheck + personalNumber
-    #if len(line) >= 43:
-     #   print("line is too long")
-        #todo: what happens now? is it even possible to be too long
-    #else:
-    for i in range(len(line), 43):
-        line += "<"
-    line += personalNumberCheck
-    #print(line)
-    return line
+    try:
+        if not passportNumber or not passportNumberCheck or not countryCode or not birthday or not birthdayCheck or not sex or not expire or not expireCheck or not personalNumber or not personalNumberCheck:
+            raise Exception
+        else:    
+            line += passportNumber + passportNumberCheck + countryCode + birthday + birthdayCheck + sex + expire + expireCheck + personalNumber
+            for i in range(len(line), 43):
+                line += "<"
+            line += personalNumberCheck
+            #print(line)
+            return line
+    except Exception:
+        print("Inside Exception")
+        return 1
+    
 def encode (data):
     #takes in json object and generates a string for the MRZ
     line1 = encodeLine1(data['line1'])

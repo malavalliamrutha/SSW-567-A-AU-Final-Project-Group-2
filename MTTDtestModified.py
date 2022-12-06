@@ -17,8 +17,11 @@ class decodeencodeTest(unittest.TestCase):
 
     def testfindval1(self):
         self.assertEqual(extract1('P<CIVLYNN<<NEVEAH<BRAM<<<<<<<<<<<<<<<<<<<<<<'),{'issuing_country': 'CIV', 'last_name':'LYNN', 'given_name': 'NEVEAH BRAM'},'Got Expected result2')
-        
+    
     def testfindval2(self):
+        self.assertEqual(extract1('<CIVLYNN<<NEVEAH<BRAM<<<<<<<<<<<<<<<<<<<<<<'),1,'Got Expected exception')
+        
+    def testfindval3(self):
         self.assertEqual(extract2("W620126G54CIV5910106F9707302AJ010215I<<<<<<6"),{'passport_number': 'W620126G5', 'country_code': 'CIV', 'birth_date': '591010', 'sex': 'F', 'expiration_date': '970730', 'personal_number': 'AJ010215I'},"Got ExpectedResult3")
 
 
@@ -65,6 +68,21 @@ class decodeencodeTest(unittest.TestCase):
         }
 
         self.assertEqual(encodeLine2(data['line']),'W620126G54CIV5910106F9707302AJ010215I<<<<<<6','Got Expected result6')
+
+    def testencode3(self):
+        data = {
+                    "line": {
+                        "passport_number": "W620126G5",
+                        "country_code": "",
+                        "birth_date": "591010",
+                        "sex": "F",
+                        "expiration_date": "970730",
+                        "personal_number": "AJ010215I"
+             }
+        }
+
+        self.assertEqual(encodeLine2(data['line']),1,'Exception Expected')
+
 
     def testgetCheckDigit(self):
         passportNumber="W620126G5"
