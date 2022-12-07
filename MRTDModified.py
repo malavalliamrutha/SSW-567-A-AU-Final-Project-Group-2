@@ -139,7 +139,7 @@ def decode(string):
     line1 = extract1(lines[0])
     line2 = extract2(lines[1])
     if not (line1["issuing_country"] == line2['country_code']):
-        print("country codes don't match")
+        return 1
     result = {"line1":line1, "line2":line2}
     result = json.dumps(result)
     #print("resultis: " + result)
@@ -152,11 +152,11 @@ def encodeLine1(data):
     lastName = data['last_name']
     givenName = data['given_name']
     if not(countryCode):
-        print('issuing country is not supplied in i line 1')
+        return 1
     if not(lastName):
-        print("last name is not supplied in line 1")
+        return 1
     if not(givenName):
-        print('given name was not provided')
+        return 1
     
     givenName = givenName.replace(" ", "<")
     line = f'{line}{countryCode}{lastName}<<{givenName}'
