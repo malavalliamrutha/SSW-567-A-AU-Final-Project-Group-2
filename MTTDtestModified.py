@@ -51,7 +51,7 @@ class decodeencodeTest(unittest.TestCase):
         }
         self.assertEqual(MRTDModified.encodeLine1(data['line']),'P<CIVLYNN<<NEVEAH<BRAM<<<<<<<<<<<<<<<<<<<<<<','Got Expected result5')
 
-     def testencodeline1(self):
+    def testencodeline1(self):
         data = {
                     "line": {
                         "issuing_country": "CIV",
