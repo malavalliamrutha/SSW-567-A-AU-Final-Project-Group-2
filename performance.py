@@ -32,7 +32,7 @@ def testPerformance(file, function):
         writer.writerow(result)
         print(printResult)
 
-        if (iterations == 100):
+        if (iterations == 100): 
             iterations = 1000
             continue
         iterations += 1000
