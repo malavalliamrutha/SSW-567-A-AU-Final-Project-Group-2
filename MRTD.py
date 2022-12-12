@@ -76,8 +76,11 @@ def extract1(line):
     countrycode = res[firstvalue][:thirdvalue]
     lastName = res[firstvalue][thirdvalue:]
     firstName = res[secondvalue]
-    middleName = res[thirdvalue]
-    givenName = firstName + " " + middleName
+    if len(res) == 4:
+        middleName = res[thirdvalue]
+        givenName = firstName + " " + middleName
+    else:
+        givenName = firstName
     
     line1 = {
         "issuing_country": countrycode,
