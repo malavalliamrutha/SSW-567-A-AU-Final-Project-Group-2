@@ -20,6 +20,9 @@ class decodeencodeTest(unittest.TestCase):
     def testfindval3(self):
         self.assertEqual(MRTD.extract2("W620126G54CIV5910106F9707302AJ010215I<<<<<<6"),{'passport_number': 'W620126G5', 'country_code': 'CIV', 'birth_date': '591010', 'sex': 'F', 'expiration_date': '970730', 'personal_number': 'AJ010215I'},"Got ExpectedResult3")
 
+    def testfindval4(self):
+        self.assertEqual(MRTD.extract1('P<ABWMALDONADO<<CAMILLA<<<<<<<<<<<<<<<<<<<<<'),{'issuing_country': 'ABW', 'last_name':'MALDONADO', 'given_name': 'CAMILLA'},'Got Expected result2 if not given middle name')
+        # added test case for the new fix as a part of performance testing. COndtion where middle name not given
 
     def testencode(self):
         data = {
