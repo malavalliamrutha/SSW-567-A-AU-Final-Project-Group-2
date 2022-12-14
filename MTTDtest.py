@@ -289,7 +289,7 @@ class MockSqlite3Database(unittest.TestCase):
 class DataBaseClass():
 
     ##Innitiates database connection system
-    def _init_(self,connection_string='test_database'):        
+    def __init__(self,connection_string='test_database'):        
         self.connection = sqlite3.connect(connection_string)
 
 if __name__ == '__main__':
