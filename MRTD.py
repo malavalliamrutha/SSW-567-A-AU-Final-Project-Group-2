@@ -195,7 +195,7 @@ def encodeLine2(data):
             #print(line)
             return line
     except Exception:
-        print("Inside Exception")
+        ##print("Inside Exception")
         return 1
     
 def encode (data):
